@@ -16,7 +16,7 @@ export default function NetworkSection({ network }: Props) {
 			Object.keys(network.tokens).map(async (token) => {
 				const tokenData = network.tokens[token];
 
-				const provider = new ethers.providers.JsonRpcProvider(network.rpc);
+				const provider = new ethers.JsonRpcProvider(network.rpc);
 
 				const contract = new ethers.Contract(tokenData, abi, provider);
 
@@ -27,7 +27,7 @@ export default function NetworkSection({ network }: Props) {
 				return {
 					name,
 					symbol,
-					balance: parseInt(ethers.utils.formatEther(balance)),
+					balance: parseInt(ethers.formatEther(balance)),
 				};
 			})
 		);

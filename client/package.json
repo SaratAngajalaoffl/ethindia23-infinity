@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@safe-global/api-kit": "^2.0.0",
     "@safe-global/auth-kit": "^2.0.0",
+    "@safe-global/protocol-kit": "^2.0.0",
+    "@safe-global/safe-core-sdk-types": "^3.0.1",
     "@web3auth/safeauth-embed": "^0.0.0",
-    "ethers": "^5.0.0",
+    "dotenv": "^16.3.1",
+    "ethers": "^6.9.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
