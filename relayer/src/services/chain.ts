@@ -41,13 +41,15 @@ export class Chain {
 				messageId: ethers.utils.id(id.toHexString()), // Use ethers.utils.id to generate a bytes32 hash
 				sourceChainSelector: parseInt(this.chainId),
 				sender: ethers.utils.hexlify(await this.signer.getAddress()), // Make sure to convert the sender address to bytes
-				data: ethers.utils.toUtf8Bytes(data), // Convert your payload to bytes
+				data: data, // Convert your payload to bytes
 				destTokenAmounts: [],
 			};
 
-			console.log('--args', entrypoint.interface.encodeFunctionData('ccipReceive', [args]));
+			console.log('--args', args);
 
-			const tx = await entrypoint.ccipReceive(args);
+			// console.log('--args', entrypoint.interface.encodeFunctionData('ccipReceive', [args]));
+
+			const tx = await entrypoint.ccipReceive(args, { gasLimit: ethers.utils.parseUnits('980000', 'wei') });
 
 			await tx.wait();
 

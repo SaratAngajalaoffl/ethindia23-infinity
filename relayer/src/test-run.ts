@@ -8,7 +8,7 @@ const MNEMONIC = 'bar jungle bean try butter donor inch bike farm enemy scatter 
 const gasPrice = { gasPrice: ethers.utils.parseUnits('1', 'gwei') };
 
 const network1 = {
-	rpc: 'https://sepolia.infura.io/v3/8355f475b03443bf996b249da90176f6',
+	rpc: 'https://sepolia-rpc.scroll.io',
 	mnemonic: MNEMONIC,
 	linkToken: '0x779877A7B0D9E8603169DdbD7836e478b4624789',
 	router: '0x9aC0Cc4e41Fe6dd4eDCb1e8819F942fD419C9F98',
