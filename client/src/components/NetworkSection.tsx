@@ -46,7 +46,7 @@ export default function NetworkSection({ network }: Props) {
 				<ClipLoader />
 			) : (
 				balances?.map((balance) => (
-					<div className='row'>
+					<div key={balance.name} className='row'>
 						<p className='key'>{balance.name}</p>
 						<p className='value'>
 							{balance.balance} {balance.symbol}

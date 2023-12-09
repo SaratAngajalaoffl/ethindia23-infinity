@@ -4,7 +4,7 @@ pragma solidity ^0.8.20;
 import "@chainlink/contracts-ccip/src/v0.8/ccip/applications/CCIPReceiver.sol";
 
 contract Router {
-    uint256 private _idCounter;
+    uint256 private _idCounter = 1;
 
     event Request(uint256 id, uint64 destChainSelector, bytes data);
 

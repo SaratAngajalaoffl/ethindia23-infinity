@@ -177,12 +177,22 @@ contract InfinityEntrypoint is CCIPReceiver {
         }
     }
 
-    function setSelector(uint256 chain, uint64 selector) external {
-        selectors[chain] = selector;
+    function setSelectors(
+        uint256[] calldata chain,
+        uint64[] calldata selector
+    ) external {
+        for (uint256 i = 0; i < chain.length; i++) {
+            selectors[chain[i]] = selector[i];
+        }
     }
 
-    function setEntrypoint(uint256 destChain, address entrypoint) external {
-        entrypoints[destChain] = entrypoint;
+    function setEntrypoints(
+        uint256[] calldata destChain,
+        address[] calldata entrypoint
+    ) external {
+        for (uint256 i = 0; i < destChain.length; i++) {
+            entrypoints[destChain[i]] = entrypoint[i];
+        }
     }
 
     function ccipReceive(

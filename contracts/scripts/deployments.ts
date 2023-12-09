@@ -19,7 +19,9 @@ export const deployInfinityEntrypoint = async () => {
   const InfinityEntrypoint = await ethers.getContractFactory(
     "InfinityEntrypoint"
   );
-  const entrypoint = await InfinityEntrypoint.deploy(linkToken, routerMock);
+  const entrypoint = await InfinityEntrypoint.deploy(linkToken, routerMock, {
+    gasPrice: ethers.parseUnits("1", "gwei"),
+  });
 
   await entrypoint.waitForDeployment();
 
@@ -34,7 +36,9 @@ export const deployToken = async (name: string, symbol: string) => {
   const [owner, otherAccount] = await ethers.getSigners();
 
   const TokenMock = await ethers.getContractFactory("TokenMock");
-  const token = await TokenMock.deploy(name, symbol);
+  const token = await TokenMock.deploy(name, symbol, {
+    gasPrice: ethers.parseUnits("1", "gwei"),
+  });
 
   await token.waitForDeployment();
 
@@ -51,7 +55,9 @@ export const deployRouter = async () => {
   const [owner, otherAccount] = await ethers.getSigners();
 
   const Router = await ethers.getContractFactory("Router");
-  const router = await Router.deploy();
+  const router = await Router.deploy({
+    gasPrice: ethers.parseUnits("1", "gwei"),
+  });
 
   await router.waitForDeployment();
 
@@ -76,6 +82,7 @@ export const deployMockTokens = async () => {
 export const main = async () => {
   await deployInfinityEntrypoint();
   // await deployMockTokens();
+  // await deployRouter();
 };
 
 main().catch((err) => console.error(err));
