@@ -27,19 +27,21 @@ export class Chain {
 		router.on('Request', async (id, destChainSelector, data) => {
 			const destChain = ethers.utils.formatUnits(destChainSelector, 'wei');
 
+			console.log('--destchain', destChain);
+
 			const chainData = (conf as any)[destChain as any];
 
 			const provider = new ethers.providers.JsonRpcProvider(chainData.rpc);
 			let wallet = ethers.Wallet.fromMnemonic('bar jungle bean try butter donor inch bike farm enemy scatter seat');
 
 			wallet = wallet.connect(provider);
-			const entrypoint = new ethers.Contract(chainData.entrypointAddress, entrypointAbi, this.signer);
+			const entrypoint = new ethers.Contract(chainData.entrypointAddress, entrypointAbi, wallet);
 
 			const args = {
-				messageId: ethers.utils.hexZeroPad(id.toHexString(), 32),
-				sourceChainSelector: this.chainId,
-				sender: ethers.constants.AddressZero,
-				data: data,
+				messageId: ethers.utils.id(id.toHexString()), // Use ethers.utils.id to generate a bytes32 hash
+				sourceChainSelector: parseInt(this.chainId),
+				sender: ethers.utils.hexlify(await this.signer.getAddress()), // Make sure to convert the sender address to bytes
+				data: ethers.utils.toUtf8Bytes(data), // Convert your payload to bytes
 				destTokenAmounts: [],
 			};
 

@@ -4,7 +4,6 @@ pragma solidity ^0.8.20;
 import "../mocks/TokenMock.sol";
 import "../mocks/RouterMock.sol";
 import "@chainlink/contracts-ccip/src/v0.8/ccip/applications/CCIPReceiver.sol";
-import {ClientLib} from "../lib/ClientLib.sol";
 
 contract InfinityEntrypoint is CCIPReceiver {
     struct Trade {
@@ -98,8 +97,8 @@ contract InfinityEntrypoint is CCIPReceiver {
                 receiver: abi.encode(_receiver),
                 data: _data,
                 tokenAmounts: new Client.EVMTokenAmount[](0),
-                extraArgs: ClientLib._argsToBytes(
-                    ClientLib.EVMExtraArgsV1({gasLimit: 200_000, strict: false})
+                extraArgs: Client._argsToBytes(
+                    Client.EVMExtraArgsV1({gasLimit: 980_000})
                 ),
                 feeToken: _feeTokenAddress
             });

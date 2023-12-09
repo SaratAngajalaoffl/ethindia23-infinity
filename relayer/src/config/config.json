@@ -3,12 +3,12 @@
 		"name": "base-goerli",
 		"rpc": "https://goerli.base.org",
 		"routerAddress": "0x1202612210b96D2287dF7Cd6c10D0D5f582bCcB4",
-		"entrypointAddress": "0xB427CBF0f89eA708b3b13a7F29FDCBAc11926dA5"
+		"entrypointAddress": "0x51d037683Fb940d73D9ECA3259BA994D603116AA"
 	},
 	"534351": {
 		"name": "scroll-sepolia",
 		"rpc": "https://sepolia-rpc.scroll.io",
 		"routerAddress": "0x9aC0Cc4e41Fe6dd4eDCb1e8819F942fD419C9F98",
-		"entrypointAddress": "0x51d037683Fb940d73D9ECA3259BA994D603116AA"
+		"entrypointAddress": "0xB427CBF0f89eA708b3b13a7F29FDCBAc11926dA5"
 	}
 }
