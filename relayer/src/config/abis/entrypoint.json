@@ -1,0 +1,160 @@
+[
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "linkToken", "type": "address" },
+			{ "internalType": "address", "name": "chainlinkRouter", "type": "address" }
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "deadline", "type": "uint256" },
+			{ "internalType": "uint256", "name": "current", "type": "uint256" }
+		],
+		"name": "AuctionExpired",
+		"type": "error"
+	},
+	{ "inputs": [{ "internalType": "address", "name": "router", "type": "address" }], "name": "InvalidRouter", "type": "error" },
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "message1", "type": "uint256" },
+			{ "internalType": "uint256", "name": "message2", "type": "uint256" }
+		],
+		"name": "MessageMismatch",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "balance", "type": "uint256" },
+			{ "internalType": "uint256", "name": "fees", "type": "uint256" }
+		],
+		"name": "NotEnoughBalance",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "size1", "type": "uint256" },
+			{ "internalType": "uint256", "name": "size2", "type": "uint256" }
+		],
+		"name": "SizeMismatch",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{ "internalType": "address", "name": "token", "type": "address" },
+			{ "internalType": "uint256", "name": "prev", "type": "uint256" },
+			{ "internalType": "uint256", "name": "curr", "type": "uint256" }
+		],
+		"name": "ValueHigher",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{ "indexed": false, "internalType": "address[]", "name": "inputs", "type": "address[]" },
+			{ "indexed": false, "internalType": "uint256[]", "name": "inputAmounts", "type": "uint256[]" },
+			{ "indexed": false, "internalType": "address", "name": "outputAddress", "type": "address" },
+			{ "indexed": false, "internalType": "uint256", "name": "outputAmount", "type": "uint256" },
+			{ "indexed": false, "internalType": "uint256", "name": "srcChain", "type": "uint256" },
+			{ "indexed": false, "internalType": "uint256", "name": "deadline", "type": "uint256" }
+		],
+		"name": "AuctionInitiated",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{ "indexed": false, "internalType": "uint256", "name": "tradeId", "type": "uint256" },
+			{ "indexed": false, "internalType": "uint256[]", "name": "inputAmounts", "type": "uint256[]" }
+		],
+		"name": "SolutionProposed",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{ "indexed": false, "internalType": "uint256", "name": "tradeId", "type": "uint256" },
+			{ "indexed": false, "internalType": "uint256[]", "name": "initialInputAmounts", "type": "uint256[]" },
+			{ "indexed": false, "internalType": "uint256[]", "name": "finalInputAmounts", "type": "uint256[]" }
+		],
+		"name": "TradeCompleted",
+		"type": "event"
+	},
+	{ "stateMutability": "payable", "type": "fallback" },
+	{
+		"inputs": [
+			{
+				"components": [
+					{ "internalType": "bytes32", "name": "messageId", "type": "bytes32" },
+					{ "internalType": "uint64", "name": "sourceChainSelector", "type": "uint64" },
+					{ "internalType": "bytes", "name": "sender", "type": "bytes" },
+					{ "internalType": "bytes", "name": "data", "type": "bytes" },
+					{
+						"components": [
+							{ "internalType": "address", "name": "token", "type": "address" },
+							{ "internalType": "uint256", "name": "amount", "type": "uint256" }
+						],
+						"internalType": "struct Client.EVMTokenAmount[]",
+						"name": "destTokenAmounts",
+						"type": "tuple[]"
+					}
+				],
+				"internalType": "struct Client.Any2EVMMessage",
+				"name": "message",
+				"type": "tuple"
+			}
+		],
+		"name": "ccipReceive",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{ "inputs": [{ "internalType": "uint256", "name": "tradeId", "type": "uint256" }], "name": "claim", "outputs": [], "stateMutability": "nonpayable", "type": "function" },
+	{ "inputs": [], "name": "getRouter", "outputs": [{ "internalType": "address", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" },
+	{
+		"inputs": [
+			{ "internalType": "address[]", "name": "inputs", "type": "address[]" },
+			{ "internalType": "uint256[]", "name": "inputAmounts", "type": "uint256[]" },
+			{ "internalType": "address", "name": "outputAddress", "type": "address" },
+			{ "internalType": "uint256", "name": "outputAmount", "type": "uint256" },
+			{ "internalType": "uint64", "name": "destChain", "type": "uint64" },
+			{ "internalType": "uint256", "name": "duration", "type": "uint256" }
+		],
+		"name": "initiate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256", "name": "tradeId", "type": "uint256" },
+			{ "internalType": "uint256[]", "name": "inputValues", "type": "uint256[]" }
+		],
+		"name": "propose",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256[]", "name": "destChain", "type": "uint256[]" },
+			{ "internalType": "address[]", "name": "entrypoint", "type": "address[]" }
+		],
+		"name": "setEntrypoints",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{ "internalType": "uint256[]", "name": "chain", "type": "uint256[]" },
+			{ "internalType": "uint64[]", "name": "selector", "type": "uint64[]" }
+		],
+		"name": "setSelectors",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{ "inputs": [{ "internalType": "bytes4", "name": "interfaceId", "type": "bytes4" }], "name": "supportsInterface", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "pure", "type": "function" }
+]

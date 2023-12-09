@@ -5,7 +5,7 @@
     "cToken": "0x07EDF0be4187C87D3c873fBd1142766e697d2aC5",
     "xToken": "0xD49d5d18C160711Ac725112c62457338C37c30F4",
     "linkToken": "0x779877A7B0D9E8603169DdbD7836e478b4624789",
-    "infinityEntrypoint": "0x4b2aE598B7423a3F581D6E7DcAa7BEE30c7acfD4",
+    "infinityEntrypoint": "0xB427CBF0f89eA708b3b13a7F29FDCBAc11926dA5",
     "chainlinkRouter": "0x9aC0Cc4e41Fe6dd4eDCb1e8819F942fD419C9F98",
     "chainlinkSelector": "534351"
   },
@@ -25,8 +25,8 @@
     "cToken": "0x07EDF0be4187C87D3c873fBd1142766e697d2aC5",
     "xToken": "0xD49d5d18C160711Ac725112c62457338C37c30F4",
     "linkToken": "0xd886e2286fd1073df82462ea1822119600af80b6",
-    "infinityEntrypoint": "0x3c36B94C83578CBD654f8334B90aF752Bf6E729B",
-    "chainlinkRouter": "0xa8c0c11bf64af62cdca6f93d3769b88bdd7cb93d",
+    "infinityEntrypoint": "0x51d037683Fb940d73D9ECA3259BA994D603116AA",
+    "chainlinkRouter": "0x1202612210b96D2287dF7Cd6c10D0D5f582bCcB4",
     "chainlinkSelector": "5790810961207155433"
   }
 }
