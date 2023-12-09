@@ -1,0 +1,22 @@
+{
+  "sepolia": {
+    "aToken": "0xD5723D9871f16353DcD53FcF9c96643B601801a2",
+    "bToken": "0xC9C0193fC31aA9698AbadB844005539C33454698",
+    "cToken": "0x9BA6409B87Bd7b72C02fa7ddd287A1035e2B2552",
+    "xToken": "0x39636F92BAcF2849024Ab3690ced89836EBf11Ce",
+    "linkToken": "0x779877A7B0D9E8603169DdbD7836e478b4624789",
+    "infinityEntrypoint": "0xA2Fd80CEE9E878c5053D2170aD920319E7eD22Fa",
+    "chainlinkRouter": "0xd0daae2231e9cb96b94c8512223533293c3693bf",
+    "chainlinkSelector": "16015286601757825753"
+  },
+  "base-goerli": {
+    "aToken": "0x08e664C62E2ff8B390051eF24B08167204B6e62C",
+    "bToken": "0xc901A057a9037c3768090CEF25Dbbc9f06A23d32",
+    "cToken": "0x07EDF0be4187C87D3c873fBd1142766e697d2aC5",
+    "xToken": "0xD49d5d18C160711Ac725112c62457338C37c30F4",
+    "linkToken": "0xd886e2286fd1073df82462ea1822119600af80b6",
+    "infinityEntrypoint": "0xE36A585D23aBc8f57eF5912b381499f60D3Ea94e",
+    "chainlinkRouter": "0xa8c0c11bf64af62cdca6f93d3769b88bdd7cb93d",
+    "chainlinkSelector": "5790810961207155433"
+  }
+}

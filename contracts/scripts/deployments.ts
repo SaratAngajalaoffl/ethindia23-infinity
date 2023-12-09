@@ -1,11 +1,20 @@
 import { ethers } from "hardhat";
+import contracts from "../config/contracts.json";
 
-export const deployInfinityEntrypoint = async (
-  linkToken: string,
-  routerMock: string
-) => {
+export const deployInfinityEntrypoint = async () => {
   // Contracts are deployed using the first signer/account by default
   const [owner, otherAccount] = await ethers.getSigners();
+
+  const networkName = (await owner.provider.getNetwork()).name;
+
+  console.log("--network name", networkName);
+
+  const networkData = (contracts as any)[networkName] as any;
+
+  const linkToken = networkData.linkToken;
+  const routerMock = networkData.chainlinkRouter;
+
+  console.log({ linkToken, routerMock });
 
   const InfinityEntrypoint = await ethers.getContractFactory(
     "InfinityEntrypoint"
@@ -15,7 +24,7 @@ export const deployInfinityEntrypoint = async (
   await entrypoint.waitForDeployment();
 
   console.log(
-    `pnpm hardhat verify --network sepolia ${await entrypoint.getAddress()} "${linkToken}" "${routerMock}"`
+    `pnpm hardhat verify --network ${networkName} ${await entrypoint.getAddress()} "${linkToken}" "${routerMock}"`
   );
 
   return { entrypoint, owner, otherAccount };
@@ -30,7 +39,9 @@ export const deployToken = async (name: string, symbol: string) => {
   await token.waitForDeployment();
 
   console.log(
-    `pnpm hardhat verify --network sepolia ${await token.getAddress()} "${name}" "${symbol}"`
+    `pnpm hardhat verify --network ${
+      (await owner.provider.getNetwork()).name
+    } ${await token.getAddress()} "${name}" "${symbol}"`
   );
 
   return { token, owner, otherAccount };
@@ -45,7 +56,9 @@ export const deployRouter = async () => {
   await router.waitForDeployment();
 
   console.log(
-    `pnpm hardhat verify --network sepolia ${await router.getAddress()}`
+    `pnpm hardhat verify --network ${
+      (await owner.provider.getNetwork()).name
+    } ${await router.getAddress()}`
   );
 
   return { router, owner, otherAccount };
@@ -61,7 +74,8 @@ export const deployMockTokens = async () => {
 };
 
 export const main = async () => {
-  await deployMockTokens();
+  await deployInfinityEntrypoint();
+  // await deployMockTokens();
 };
 
-// main().catch((err) => console.error(err));
+main().catch((err) => console.error(err));

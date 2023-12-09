@@ -1,27 +1,23 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
+import "@chainlink/contracts-ccip/src/v0.8/ccip/applications/CCIPReceiver.sol";
+
 contract Router {
     uint256 private _idCounter;
 
     event Request(uint256 id, uint64 destChainSelector, bytes data);
 
-    struct EVMTokenAmount {
-        address token;
-        uint256 amount;
-    }
-
-    struct EVM2AnyMessage {
-        bytes receiver;
-        bytes data;
-        EVMTokenAmount[] tokenAmounts;
-        address feeToken;
-        bytes extraArgs;
+    function getFee(
+        uint64 destinationChainSelector,
+        Client.EVM2AnyMessage memory message
+    ) external returns (uint256) {
+        return 0;
     }
 
     function ccipSend(
         uint64 destinationChainSelector,
-        EVM2AnyMessage memory message
+        Client.EVM2AnyMessage memory message
     ) external payable returns (bytes32) {
         uint256 id = _idCounter;
 
