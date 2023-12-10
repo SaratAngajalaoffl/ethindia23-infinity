@@ -5,6 +5,7 @@ import BalancePanel from '../components/BalancePanel';
 
 import { SafeAuthPack, SafeAuthConfig, SafeAuthInitOptions } from '@safe-global/auth-kit';
 import { getSafeAuthPack } from '@/utils/safe.utils';
+import Image from 'next/image';
 
 function App() {
 	const [authPack, setAuthPack] = useState<SafeAuthPack | null>();
@@ -29,11 +30,14 @@ function App() {
 		<div className='main'>
 			<div className='left_panel grid place-items-center'>
 				<div className='flex flex-col gap-8'>
-					<select value={selectedChain} onChange={(e) => setSelectedChain(e.target.value as any)}>
+					<select className='flex flex-row items-center gap-3 text-black bg-white p-2 border border-black rounded-lg' value={selectedChain} onChange={(e) => setSelectedChain(e.target.value as any)}>
 						<option value={'sepolia'}>Sepolia</option>
 						<option value={'base-goerli'}>Base Goerli</option>
 					</select>
-					<button onClick={handleConnect}>Connect Safe</button>
+					<button className='flex flex-row items-center gap-3 text-black bg-[#12ff80] p-2 border border-black rounded-lg' onClick={handleConnect}>
+						<p>Connect Safe</p>
+						<Image src='/safe.png' alt='safe-logo' width={32} height={32} />
+					</button>
 				</div>
 			</div>
 			<div className='right_panel'>

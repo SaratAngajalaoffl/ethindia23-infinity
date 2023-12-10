@@ -29,7 +29,7 @@ export default function BalancePanel() {
 		<div className='balance_panel'>
 			<h2 className='balances_header'>Balances</h2>
 			{networks.map((item) => (
-				<NetworkSection network={item} />
+				<NetworkSection network={item} key={item.name} />
 			))}
 		</div>
 	);

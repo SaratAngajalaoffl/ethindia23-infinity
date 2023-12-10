@@ -43,7 +43,9 @@ export default function NetworkSection({ network }: Props) {
 		<div className='network_section'>
 			<h3 className='header'>{network.name}</h3>
 			{!balances ? (
-				<ClipLoader />
+				<div className='self-center'>
+					<ClipLoader />
+				</div>
 			) : (
 				balances?.map((balance) => (
 					<div key={balance.name} className='row'>
