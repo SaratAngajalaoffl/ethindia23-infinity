@@ -262,15 +262,14 @@ contract InfinityEntrypoint is CCIPReceiver {
             }
         }
 
-        if (auction.activeBid.solver != address(0)) {
-            TokenMock(auction.outputAddress).transferFrom(
-                solver,
-                address(this),
-                auction.outputAmount
-            );
+        TokenMock(auction.outputAddress).transferFrom(
+            solver,
+            address(this),
+            auction.outputAmount
+        );
 
-            TokenMock(auction.outputAddress).transferFrom(
-                address(this),
+        if (auction.activeBid.solver != address(0)) {
+            TokenMock(auction.outputAddress).transfer(
                 auction.activeBid.solver,
                 auction.outputAmount
             );

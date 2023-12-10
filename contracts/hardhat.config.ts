@@ -12,7 +12,7 @@ const config: HardhatUserConfig = {
     apiKey: {
       sepolia: ETHERSCAN_API_KEY,
       "scroll-sepolia": "ZFWGKW1QXU1YEUU9SV4JY8UZ1DCSW1TVSN",
-      "arbitrum-sepolia": ETHERSCAN_API_KEY,
+      "arbitrum-sepolia": "C92WC3J3BIQFXNF3KSVM1ZVW44K221C63H",
       baseGoerli: ETHERSCAN_API_KEY,
       "mantle-testnet": ETHERSCAN_API_KEY,
       "celo-alfajores": ETHERSCAN_API_KEY,

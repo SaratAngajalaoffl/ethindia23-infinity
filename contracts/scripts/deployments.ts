@@ -17,7 +17,7 @@ export const deployInfinityEntrypoint = async () => {
     "InfinityEntrypoint"
   );
   const entrypoint = await InfinityEntrypoint.deploy(routerMock, {
-    gasPrice: ethers.parseUnits("10", "gwei"),
+    gasPrice: ethers.parseUnits("1", "gwei"),
   });
 
   await entrypoint.waitForDeployment();

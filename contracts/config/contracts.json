@@ -1,4 +1,7 @@
 {
+  "arbitrum-sepolia": {
+    "chainlinkRouter": "0xF6aC3c345296DCd381659Dff0bD04b53Ec213Bee"
+  },
   "mantle-testnet": {
     "chainlinkRouter": "0xF6aC3c345296DCd381659Dff0bD04b53Ec213Bee"
   },
