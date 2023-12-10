@@ -18,19 +18,18 @@ Creating a competition among solvers to provide the best possible price ensures 
 
 Following are the protocols being used
 
--   Scroll, Celo, Mantle, Linea, Base and Arbitrum - Chains to deploy on
+-   Scroll, Celo, Mantle, Sepolia, Base and Arbitrum - Chains to deploy on
 -   Chainlink CCIP - to pass messages across chains
--   Safe AA SDK - to enable batching of transactions and paymaster functionalities
--   Metamask - get realtime gas price data
+-   Safe AA SDK - to enable seamless authentication and batching of transactions
 
 User sends a transaction calling the below function on the `InfinityEntrypoint` contract on the source chain
 
 ```
 initiate(
 	address[] inputs,
-	address inputValues[],
-	address outputs[],
-	address outputValues[],
+	address[] inputAmounts,
+	address output,
+	address outputAmount,
 	uint256 destChain,
 	uint256 duration
 )
@@ -43,7 +42,6 @@ Solvers call the below function on the `InfinityEntrypoint` contract on the dest
 ```
 propose(
 	uint256 tradeId,
-	address[] inputs,
 	address inputValues[]
 )
 ```
@@ -77,13 +75,13 @@ The contract checks the defined duration has elapsed and releases funds on the d
 
 ## Scroll
 
--   CustomChainlinkRouter:
--   InfinityEntrypoint:
+-   CustomChainlinkRouter: [0xA02A2706BD8C4be84A1fEB01741C10DDc975D857](https://sepolia.scrollscan.com/address/0xA02A2706BD8C4be84A1fEB01741C10DDc975D857#code)
+-   InfinityEntrypoint: [0x84335e34dbdE7eD4d15851B96E350FE010Cb7147](https://sepolia.scrollscan.com/address/0x84335e34dbdE7eD4d15851B96E350FE010Cb7147#code)
 
 ## Arbitrum
 
--   CustomChainlinkRouter:
--   InfinityEntrypoint:
+-   CustomChainlinkRouter:[0xF6aC3c345296DCd381659Dff0bD04b53Ec213Bee](https://sepolia.arbiscan.io/address/0xF6aC3c345296DCd381659Dff0bD04b53Ec213Bee)
+-   InfinityEntrypoint: [0x08e664C62E2ff8B390051eF24B08167204B6e62C](https://sepolia.arbiscan.io/address/0x08e664C62E2ff8B390051eF24B08167204B6e62C)
 
 ## Celo
 
@@ -96,10 +94,13 @@ The contract checks the defined duration has elapsed and releases funds on the d
 
 ### Transaction Trace
 
--   User Initiates Trade - [here](https://sepolia.etherscan.io/tx/0x542ccb31a14f5b731316a957478e307705d6020869ef03b497de238596b6f0d0)
--   Trade propagates through CCIP - [here](https://ccip.chain.link/msg/0x259440c5b04d8891a4dc5645ad89691c5c8aa5bca9860c7eb06d9a71f4abe538)
--   Corresponding transaction on base-goerli chain - [here](https://goerli.basescan.org/tx/0x37245a3a0e7c9698c7887b3e9ee0cd116b6178022655fa1483c522c8033a7e58)
--   Solver proposes a solution - [here](https://goerli.basescan.org/tx/0xc088080b792ef85396ecabcc893d7b2cb6e6a8021212425e45710bd374d13e6e)
+-   User Initiates Trade - [here](https://sepolia.etherscan.io/tx/0x3d7f6cfc34a7e27ff82ca50584d0b0bd68320a3c29d0c32077fbbcee0b1831ce)
+-   Trade propagates through CCIP - [here](https://ccip.chain.link/msg/0x98ddf98f1f2aba1b2600d3c58a733be5cc2c8164cead1f73c6a67bb601ec2f2c)
+-   Corresponding transaction on base-goerli chain - [here](https://goerli.basescan.org/tx/0x013a7a356c42192b2232010373a25648c5a92b3875859015a3d3e31bef848aeb)
+-   Solvers propose solutions - [here](https://goerli.basescan.org/tx/0x8dae66996051a1a9bbf4bb48a0aeef75e8f001977d79c5bed4651b616b0744fd) and [here](https://goerli.basescan.org/tx/0x52778be667a8c2b41afc0373ed5de816e7f400cd0a2771ec11b7c82a504368eb)
+-   Winner of the auction claims the rewards - [here](https://goerli.basescan.org/tx/0x9d54005918a0567b7381434bca46ac5e9053dd88477aee01304f184a5a54a1ba)
+-   A message again propagates through CCIP - [here](https://ccip.chain.link/msg/0x81a9c70bb4b21c7f9acbe26eabec5f45add875fc6d5bb04e0c3a9952fc2d97eb)
+-   And initiates release of user funds on the destination chain - [here](https://ccip.chain.link/msg/0x81a9c70bb4b21c7f9acbe26eabec5f45add875fc6d5bb04e0c3a9952fc2d97eb)
 
 # Team
 
