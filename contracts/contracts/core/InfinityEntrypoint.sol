@@ -46,7 +46,6 @@ contract InfinityEntrypoint is CCIPReceiver {
     uint256 private _idCounter = 1;
 
     Router private _chainlinkRouter;
-    TokenMock private _linkToken; // Remove this
 
     error NotEnoughBalance(uint256 balance, uint256 fees);
     error MessageMismatch(uint256 message1, uint256 message2);
@@ -71,11 +70,7 @@ contract InfinityEntrypoint is CCIPReceiver {
         uint256[] finalInputAmounts
     );
 
-    constructor(
-        address linkToken,
-        address chainlinkRouter
-    ) CCIPReceiver(chainlinkRouter) {
-        _linkToken = TokenMock(linkToken);
+    constructor(address chainlinkRouter) CCIPReceiver(chainlinkRouter) {
         _chainlinkRouter = Router(chainlinkRouter);
     }
 
@@ -108,8 +103,6 @@ contract InfinityEntrypoint is CCIPReceiver {
     function _ccipReceive(
         Client.Any2EVMMessage memory message
     ) internal override {
-        uint256 messageId = uint256(message.messageId); // fetch the messageId
-
         if (message.data[0] == 0) {
             (bool flag, Trade memory trade) = abi.decode(
                 message.data,
@@ -155,14 +148,12 @@ contract InfinityEntrypoint is CCIPReceiver {
             for (uint256 i = 0; i < trade.inputs.length; i++) {
                 TokenMock token = TokenMock(trade.inputs[i]);
 
-                token.transferFrom(
-                    address(this),
+                token.transfer(
                     auction.activeBid.solver,
                     auction.activeBid.inputAmounts[i]
                 );
 
-                token.transferFrom(
-                    address(this),
+                token.transfer(
                     trade.sender,
                     trade.inputAmounts[i] - auction.activeBid.inputAmounts[i]
                 );
@@ -182,6 +173,7 @@ contract InfinityEntrypoint is CCIPReceiver {
     ) external {
         for (uint256 i = 0; i < chain.length; i++) {
             selectors[chain[i]] = selector[i];
+            chains[selector[i]] = chain[i];
         }
     }
 
@@ -260,10 +252,6 @@ contract InfinityEntrypoint is CCIPReceiver {
             revert SizeMismatch(auction.inputs.length, inputValues.length);
         }
 
-        if (block.timestamp > auction.deadline) {
-            revert AuctionExpired(auction.deadline, block.timestamp);
-        }
-
         for (uint256 i = 0; i < inputValues.length; i++) {
             if (inputValues[i] > auction.activeBid.inputAmounts[i]) {
                 revert ValueHigher(
@@ -301,8 +289,6 @@ contract InfinityEntrypoint is CCIPReceiver {
         Auction memory auction = auctions[tradeId];
         uint256 destChain = auction.srcChain;
 
-        require(block.timestamp > auction.deadline, "AUCTION STILL ONGOING");
-
         Client.EVM2AnyMessage memory message = _buildCCIPMessage(
             entrypoints[destChain],
             abi.encode(true, auction),
@@ -315,17 +301,15 @@ contract InfinityEntrypoint is CCIPReceiver {
             revert NotEnoughBalance(address(this).balance, fees);
 
         // Send the CCIP message through the router and store the returned CCIP message ID
-        bytes32 messageId = _chainlinkRouter.ccipSend{value: fees}(
-            selectors[destChain],
-            message
-        );
+        _chainlinkRouter.ccipSend{value: fees}(selectors[destChain], message);
 
-        TokenMock(auction.outputAddress).transferFrom(
-            address(this),
+        TokenMock(auction.outputAddress).transfer(
             auction.recieverAddress,
             auction.outputAmount
         );
     }
+
+    receive() external payable {}
 
     fallback() external payable {}
 }

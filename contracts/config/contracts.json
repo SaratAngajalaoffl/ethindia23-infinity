@@ -1,4 +1,10 @@
 {
+  "mantle-testnet": {
+    "chainlinkRouter": "0xF6aC3c345296DCd381659Dff0bD04b53Ec213Bee"
+  },
+  "celo-alfajores": {
+    "chainlinkRouter": "0xF6aC3c345296DCd381659Dff0bD04b53Ec213Bee"
+  },
   "scroll-sepolia": {
     "aToken": "0x08e664C62E2ff8B390051eF24B08167204B6e62C",
     "bToken": "0xc901A057a9037c3768090CEF25Dbbc9f06A23d32",

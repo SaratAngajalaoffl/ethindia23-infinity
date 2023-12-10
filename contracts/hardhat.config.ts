@@ -14,6 +14,8 @@ const config: HardhatUserConfig = {
       "scroll-sepolia": "ZFWGKW1QXU1YEUU9SV4JY8UZ1DCSW1TVSN",
       "arbitrum-sepolia": ETHERSCAN_API_KEY,
       baseGoerli: ETHERSCAN_API_KEY,
+      "mantle-testnet": ETHERSCAN_API_KEY,
+      "celo-alfajores": ETHERSCAN_API_KEY,
     },
     enabled: true,
     customChains: [
@@ -31,6 +33,30 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-sepolia.scrollscan.com/api",
           browserURL: "https://sepolia.scrollscan.com",
+        },
+      },
+      {
+        chainId: 5001,
+        network: "mantle-testnet",
+        urls: {
+          apiURL: "https://explorer.testnet.mantle.xyz/api",
+          browserURL: "https://explorer.testnet.mantle.xyz",
+        },
+      },
+      {
+        chainId: 44787,
+        network: "celo-alfajores",
+        urls: {
+          apiURL: "https://explorer.celo.org/alfajores/api",
+          browserURL: "https://explorer.celo.org/alfajores",
+        },
+      },
+      {
+        chainId: 421614,
+        network: "arbitrum-sepolia",
+        urls: {
+          apiURL: "https://api-sepolia.arbiscan.io/api",
+          browserURL: "https://sepolia.arbiscan.io",
         },
       },
     ],

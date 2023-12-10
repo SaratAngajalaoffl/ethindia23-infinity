@@ -11,22 +11,19 @@ export const deployInfinityEntrypoint = async () => {
 
   const networkData = (contracts as any)[networkName] as any;
 
-  const linkToken = networkData.linkToken;
   const routerMock = networkData.chainlinkRouter;
-
-  console.log({ linkToken, routerMock });
 
   const InfinityEntrypoint = await ethers.getContractFactory(
     "InfinityEntrypoint"
   );
-  const entrypoint = await InfinityEntrypoint.deploy(linkToken, routerMock, {
-    gasPrice: ethers.parseUnits("1", "gwei"),
+  const entrypoint = await InfinityEntrypoint.deploy(routerMock, {
+    gasPrice: ethers.parseUnits("10", "gwei"),
   });
 
   await entrypoint.waitForDeployment();
 
   console.log(
-    `pnpm hardhat verify --network ${networkName} ${await entrypoint.getAddress()} "${linkToken}" "${routerMock}"`
+    `pnpm hardhat verify --network ${networkName} ${await entrypoint.getAddress()} "${routerMock}"`
   );
 
   return { entrypoint, owner, otherAccount };

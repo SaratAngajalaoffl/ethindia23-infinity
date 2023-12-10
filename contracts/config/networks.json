@@ -5,14 +5,14 @@
       "mnemonic": "bar jungle bean try butter donor inch bike farm enemy scatter seat"
     }
   },
-  "optimism-sepolia": {
-    "url": "https://optimism-sepolia.infura.io/v3/8355f475b03443bf996b249da90176f6",
+  "base-goerli": {
+    "url": "https://goerli.base.org",
     "accounts": {
       "mnemonic": "bar jungle bean try butter donor inch bike farm enemy scatter seat"
     }
   },
-  "arbitrum-sepolia": {
-    "url": "https://arbitrum-sepolia.infura.io/v3/8355f475b03443bf996b249da90176f6",
+  "mantle-testnet": {
+    "url": "https://rpc.testnet.mantle.xyz",
     "accounts": {
       "mnemonic": "bar jungle bean try butter donor inch bike farm enemy scatter seat"
     }
@@ -23,20 +23,15 @@
       "mnemonic": "bar jungle bean try butter donor inch bike farm enemy scatter seat"
     }
   },
-  "base-goerli": {
-    "url": "https://goerli.base.org",
+
+  "arbitrum-sepolia": {
+    "url": "https://arbitrum-sepolia.infura.io/v3/8355f475b03443bf996b249da90176f6",
     "accounts": {
       "mnemonic": "bar jungle bean try butter donor inch bike farm enemy scatter seat"
     }
   },
   "scroll-sepolia": {
     "url": "https://sepolia-rpc.scroll.io",
-    "accounts": {
-      "mnemonic": "bar jungle bean try butter donor inch bike farm enemy scatter seat"
-    }
-  },
-  "linea-goerli": {
-    "url": "https://linea-goerli.infura.io/v3/8355f475b03443bf996b249da90176f6",
     "accounts": {
       "mnemonic": "bar jungle bean try butter donor inch bike farm enemy scatter seat"
     }

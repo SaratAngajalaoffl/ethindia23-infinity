@@ -62,39 +62,44 @@ The contract checks the defined duration has elapsed and releases funds on the d
 
 # Deployment Addresses
 
-## Scroll
+## Sepolia
 
--   MockPriceProvider:
--   InfinityEntrypoint:
+-   InfinityEntrypoint: [0x09246EeB9D56bDc7Cd66f1928764B05B07F4C47E](https://sepolia.etherscan.io/address/0x09246EeB9D56bDc7Cd66f1928764B05B07F4C47E)
 
 ## Base
 
--   MockPriceProvider:
+-   InfinityEntrypoint: [0x28bBB720d15D63543861b5FC94bF93Bb4AdC680A](https://goerli.basescan.org/address/0x28bBB720d15D63543861b5FC94bF93Bb4AdC680A)
+
+## Mantle
+
+-   CustomChainlinkRouter: [0xF6aC3c345296DCd381659Dff0bD04b53Ec213Bee](https://explorer.testnet.mantle.xyz/address/0xF6aC3c345296DCd381659Dff0bD04b53Ec213Bee)
+-   InfinityEntrypoint: [0xc901A057a9037c3768090CEF25Dbbc9f06A23d32](https://explorer.testnet.mantle.xyz/address/0xc901A057a9037c3768090CEF25Dbbc9f06A23d32)
+
+## Scroll
+
+-   CustomChainlinkRouter:
 -   InfinityEntrypoint:
 
 ## Arbitrum
 
--   MockPriceProvider:
--   InfinityEntrypoint:
-
-## Linea
-
--   MockPriceProvider:
+-   CustomChainlinkRouter:
 -   InfinityEntrypoint:
 
 ## Celo
 
--   MockPriceProvider:
--   InfinityEntrypoint:
-
-## Mantle
-
--   MockPriceProvider:
--   InfinityEntrypoint:
+-   CustomChainlinkRouter: [0xF6aC3c345296DCd381659Dff0bD04b53Ec213Bee](https://explorer.celo.org/alfajores/address/0xF6aC3c345296DCd381659Dff0bD04b53Ec213Bee)
+-   InfinityEntrypoint: [0xc901A057a9037c3768090CEF25Dbbc9f06A23d32](https://explorer.celo.org/alfajores/address/0xc901A057a9037c3768090CEF25Dbbc9f06A23d32)
 
 ## Chainlink
 
--   Live CCIP Message ID: 0x24c492bb4f9e22e81575e39b48c3f9b9866040f0c61806d780550e305e0fc999
+-   Live CCIP Message ID: [0x259440c5b04d8891a4dc5645ad89691c5c8aa5bca9860c7eb06d9a71f4abe538](https://ccip.chain.link/msg/0x259440c5b04d8891a4dc5645ad89691c5c8aa5bca9860c7eb06d9a71f4abe538)
+
+### Transaction Trace
+
+-   User Initiates Trade - [here](https://sepolia.etherscan.io/tx/0x542ccb31a14f5b731316a957478e307705d6020869ef03b497de238596b6f0d0)
+-   Trade propagates through CCIP - [here](https://ccip.chain.link/msg/0x259440c5b04d8891a4dc5645ad89691c5c8aa5bca9860c7eb06d9a71f4abe538)
+-   Corresponding transaction on base-goerli chain - [here](https://goerli.basescan.org/tx/0x37245a3a0e7c9698c7887b3e9ee0cd116b6178022655fa1483c522c8033a7e58)
+-   Solver proposes a solution - [here](https://goerli.basescan.org/tx/0xc088080b792ef85396ecabcc893d7b2cb6e6a8021212425e45710bd374d13e6e)
 
 # Team
 
